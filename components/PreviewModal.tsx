@@ -40,6 +40,15 @@ export default function PreviewModal({
                 <InteractiveField field={field} />
               </div>
             ))}
+            <div className="flex justify-end mt-10">
+              <button
+                type="submit"
+                disabled
+                className="flex items-center font-semibold border transition-all ease-in duration-75 whitespace-nowrap text-center select-none disabled:shadow-none disabled:opacity-50 disabled:cursor-not-allowed gap-x-1 active:shadow-none text-sm leading-5 rounded-xl py-1.5 h-8 px-4 bg-green-300 text-white border-green-500 hover:border-green-600 disabled:bg-green-400 disabled:border-green-400 shadow-10 hover:shadow-15"
+              >
+                Submit
+              </button>
+            </div>
           </div>
         </Dialog.Content>
       </Dialog.Portal>
