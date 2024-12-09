@@ -3,7 +3,7 @@ import { Form } from "@/models/form";
 
 export async function GET(
   request: Request,
-  { params }: { params: { formId: string } }
+  { params }: { params: Promise<{ formId: string }> }
 ) {
   try {
     await dbConnect();
