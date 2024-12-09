@@ -33,10 +33,10 @@ export default function CreateForm() {
       fields: [],
     },
   });
-
   const { handleSubmit, watch, setValue, getValues } = methods;
-
   const fields = watch("fields");
+  const formValues = watch();
+  const [isSavingEnabled, setIsSavingEnabled] = useState(false);
 
   const addNewField = (type: string) => {
     const newField: Field = {
@@ -76,8 +76,6 @@ export default function CreateForm() {
       if (response.ok) {
         setCreaedForm(data);
         setIsSubmitSuccessModalOpen(true);
-
-        toast.success("Form published successfully");
       } else {
         toast.error("Failed to submit form");
       }
@@ -94,19 +92,19 @@ export default function CreateForm() {
     if (savedData) {
       const formData = JSON.parse(savedData);
       methods.reset(formData);
+      setIsSavingEnabled(true);
     }
     setFieldsLoading(false);
   }, []);
 
-  //   useEffect(() => {
-  //     if (isDraftSaved) {
-  //       const formData = getValues();
-  //       localStorage.setItem("formData", JSON.stringify(formData));
-  //       console.log("Draft saved successfully!");
-  //     }
-  //   }, [fields, title]);
+  useEffect(() => {
+    if (isSavingEnabled) {
+      localStorage.setItem("formData", JSON.stringify(formValues));
+    }
+  }, [formValues, isSavingEnabled]);
 
   const handleSaveAsDraft = () => {
+    setIsSavingEnabled(true);
     const formData = getValues();
     localStorage.setItem("formData", JSON.stringify(formData));
     toast.success("Draft saved successfully!");

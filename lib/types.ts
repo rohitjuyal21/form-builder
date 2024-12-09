@@ -12,4 +12,6 @@ export interface Form {
   formId: string;
   title: string;
   fields: Field[];
+  createdAt: Date;
+  updatedAt: Date;
 }

@@ -1,4 +1,4 @@
-import { ChevronDown, GripVertical } from "lucide-react";
+import { ChevronDown, GripVertical, X } from "lucide-react";
 import React, { useState } from "react";
 import QuestionsDropdown from "./QuestionsDropdown";
 import { inputTypes } from "@/lib/inputTypes";
@@ -29,6 +29,7 @@ export default function Question({
   const [isQuestionsDropdownOpen, setIsQuestionsDropdownOpen] = useState(false);
   const {
     setValue,
+    getValues,
     formState: { errors },
   } = useFormContext<z.infer<typeof formSchema>>();
 
@@ -61,9 +62,15 @@ export default function Question({
     setValue(`fields.${index}.options`, updatedOptions);
   };
 
+  const handleRemoveQuestion = () => {
+    const updatedFields = [...getValues("fields")];
+    updatedFields.splice(index, 1);
+    setValue("fields", updatedFields);
+  };
+
   return (
     <div className="bg-gray-00 border border-primaryBorder p-4 hover:bg-gray-50 rounded-2xl space-y-2">
-      <div className="flex jutify-between items-center">
+      <div className="flex jutify-between items-center gap-4">
         <div className="flex flex-col gap-1 flex-1">
           <input
             type="text"
@@ -88,7 +95,7 @@ export default function Question({
             className="text-xs placeholder:text-gray-400 bg-transparent border-none outline-none"
           />
         </div>
-        <div className="flex items-center gap-x-2">
+        <div className="flex items-center gap-x-1">
           <DropdownMenu.Root
             open={isQuestionsDropdownOpen}
             onOpenChange={setIsQuestionsDropdownOpen}
@@ -110,6 +117,12 @@ export default function Question({
               </DropdownMenu.Content>
             </DropdownMenu.Portal>
           </DropdownMenu.Root>
+          <button
+            onClick={handleRemoveQuestion}
+            className="justify-center shrink-0 flex items-center font-semibold border transition-all ease-in duration-75 whitespace-nowrap text-center select-none disabled:shadow-none disabled:opacity-50 disabled:cursor-not-allowed active:shadow-none text-xs leading-4 py-1 rounded-lg bg-gray-00 px-2 border-transparent hover:border-gray-200 hover:shadow-10 text-gray-400 hover:text-gray-1k h-8 w-8 "
+          >
+            <X className="size-5" />
+          </button>
           <button
             type="button"
             {...dragHandleProps}
