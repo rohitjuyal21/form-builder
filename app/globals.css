@@ -3,19 +3,54 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* --background: #ffffff;
+  --foreground: #171717; */
+  --gray-00: 255 255 255;
+  --gray-25: 248, 249, 251;
+  --gray-50: 250 251 252;
+  --gray-100: 246 248 250;
+  --gray-200: 225 228 232;
+  --gray-300: 209 213 218;
+  --gray-400: 149 157 165;
+  --gray-500: 106 115 125;
+  --gray-600: 88 96 105;
+  --gray-700: 68 77 86;
+  --gray-800: 55 57 63;
+  --gray-900: 36 41 46;
+  --gray-1k: 13 13 13;
+  --red-00: 255 234 234;
+  --red-300: 235 87 87;
+  --green-300: 0 170 69;
+  --green-400: 33 150 83;
+  --green-500: 30 135 75;
+  --border: var(--gray-200);
+  --shadow-5: 0px 1px 1px -0.5px rgba(0, 0, 0, 0.03),
+    0px 3px 3px -1.5px rgba(0, 0, 0, 0.03);
+  --shadow-10: 0px 3px 3px -1.5px rgba(0, 0, 0, 0.03),
+    0px 6px 6px -3px rgba(0, 0, 0, 0.03), 0px 12px 12px -6px rgba(0, 0, 0, 0.03);
+  --shadow-15: 0px 3px 3px -1.5px rgba(0, 0, 0, 0.08),
+    0px 6px 6px -3px rgba(0, 0, 0, 0.08), 0px 12px 12px -6px rgba(0, 0, 0, 0.08),
+    0px 24px 24px -12px rgba(0, 0, 0, 0.08);
+  --shadow-focus: 0px 0px 0px 4px #e1e4e880;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-gray-00 text-gray-1k;
+}
+
+@layer base {
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"] {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield !important;
+  }
 }
