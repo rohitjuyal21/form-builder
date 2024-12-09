@@ -19,10 +19,6 @@ export default function SharedForm({ formId }: { formId: string }) {
     defaultValues: { fields: form?.fields || [] },
   });
 
-  const {
-    formState: { errors },
-  } = methods;
-
   const fetchForm = useCallback(async () => {
     setIsLoading(true);
     try {
