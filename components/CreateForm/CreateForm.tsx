@@ -14,7 +14,7 @@ import { toast } from "react-toastify";
 import PreviewModal from "../PreviewModal";
 import QuestionsList from "./QuestionsList";
 import SubmitSuccessModal from "../SubmitSuccessModal";
-import { customAlphabet, nanoid } from "nanoid";
+import { customAlphabet } from "nanoid";
 import { kebabCase } from "@/lib/converToKebab";
 
 export default function CreateForm() {

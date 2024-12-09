@@ -63,7 +63,7 @@ export const sharedFormSchema = z.object({
           try {
             validation.parse(data.value);
           } catch (error) {
-            return false;
+            return error;
           }
         }
         return true;

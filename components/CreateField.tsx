@@ -141,7 +141,7 @@ export const FieldRenderer = ({
 
                 {error && option === "" && (
                   <p className="text-red-300 text-xs mt-1 pl-6">
-                    Option can't be empty
+                    Option can&apos;t be empty
                   </p>
                 )}
               </div>

@@ -14,7 +14,6 @@ import { toast } from "react-toastify";
 export default function SharedForm({ formId }: { formId: string }) {
   const [form, setForm] = useState<Form | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [isAddNameModalOpen, setIsAddNameModalOpen] = useState(false);
   const methods = useForm<z.infer<typeof sharedFormSchema>>({
     resolver: zodResolver(sharedFormSchema),
     defaultValues: { fields: form?.fields || [] },
@@ -72,7 +71,6 @@ export default function SharedForm({ formId }: { formId: string }) {
       });
       if (response.ok) {
         methods.reset();
-        setIsAddNameModalOpen(false);
         toast.success("Form submitted successfully!");
       }
     } catch (error) {
@@ -113,7 +111,6 @@ export default function SharedForm({ formId }: { formId: string }) {
                 <button
                   type="submit"
                   disabled={completeness < 100}
-                  onClick={() => setIsAddNameModalOpen(true)}
                   className="flex items-center font-semibold border transition-all ease-in duration-75 whitespace-nowrap text-center select-none disabled:shadow-none disabled:opacity-50 disabled:cursor-not-allowed gap-x-1 active:shadow-none text-sm leading-5 rounded-xl py-1.5 h-8 px-4 bg-green-300 text-white border-green-500 hover:border-green-600 disabled:bg-green-400 disabled:border-green-400 shadow-10 hover:shadow-15"
                 >
                   Submit
@@ -121,11 +118,6 @@ export default function SharedForm({ formId }: { formId: string }) {
               </div>
             </div>
           </form>
-          {/* <AddNameModal
-            isOpen={isAddNameModalOpen}
-            setIsOpen={setIsAddNameModalOpen}
-            onSubmit={methods.handleSubmit(onSubmit)}
-          /> */}
         </FormProvider>
       )}
     </AppLayout>

@@ -1,5 +1,5 @@
-import { ChevronDown, GripVertical, Plus } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { ChevronDown, GripVertical } from "lucide-react";
+import React, { useState } from "react";
 import QuestionsDropdown from "./QuestionsDropdown";
 import { inputTypes } from "@/lib/inputTypes";
 import { FieldRenderer } from "./CreateField";
@@ -9,7 +9,6 @@ import { useFormContext } from "react-hook-form";
 import { z } from "zod";
 import { formSchema } from "@/lib/zod";
 import { Field } from "@/lib/types";
-import { useDraggable } from "@dnd-kit/core";
 
 interface QuestionProps {
   field: Field;
