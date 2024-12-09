@@ -3,6 +3,7 @@ import "./globals.css";
 import { Instrument_Serif, Inter } from "next/font/google";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -56,6 +57,7 @@ export default function RootLayout({
           {children}
         </div>
         <ToastContainer position="bottom-right" className={"toast-container"} />
+        <Analytics />
       </body>
     </html>
   );
